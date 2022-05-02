@@ -1,0 +1,78 @@
+<odoo>
+  <data>
+      <template id="portal_my_home_menu_helpdesk_ext" inherit_id="helpdesk.tickets_followup" priority="50">
+        <xpath expr="//div[@name='description']" position="after">
+            <div class="row mb-4" name="cosa_accade">
+                <strong class="col-lg-2">Cosa accade</strong>
+                    <div t-if="ticket.x_studio_stato_attuale" class="col-lg-10" t-field="ticket.x_studio_stato_attuale"/>
+                    <div t-else="" class="col-lg-10">
+                        <em class="text-muted"><small>Nessuna descrizione</small></em>
+                    </div>
+            </div>
+            <div class="row mb-4" name="cosa_dovrebbe_accadere">
+                <strong class="col-lg-2">Cosa dovrebbe accadere</strong>
+                    <div t-if="ticket.x_studio_richiesta" class="col-lg-10" t-field="ticket.x_studio_richiesta"/>
+                    <div t-else="" class="col-lg-10">
+                        <em class="text-muted"><small>Nessuna descrizione</small></em>
+                    </div>
+            </div>
+        </xpath>
+      </template>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="abc_helpdesk_portal_ext.list">
+      <field name="name">abc_helpdesk_portal_ext list</field>
+      <field name="model">abc_helpdesk_portal_ext.abc_helpdesk_portal_ext</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="abc_helpdesk_portal_ext.action_window">
+      <field name="name">abc_helpdesk_portal_ext window</field>
+      <field name="res_model">abc_helpdesk_portal_ext.abc_helpdesk_portal_ext</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="abc_helpdesk_portal_ext.action_server">
+      <field name="name">abc_helpdesk_portal_ext server</field>
+      <field name="model_id" ref="model_abc_helpdesk_portal_ext_abc_helpdesk_portal_ext"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="abc_helpdesk_portal_ext" id="abc_helpdesk_portal_ext.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="abc_helpdesk_portal_ext.menu_1" parent="abc_helpdesk_portal_ext.menu_root"/>
+    <menuitem name="Menu 2" id="abc_helpdesk_portal_ext.menu_2" parent="abc_helpdesk_portal_ext.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="abc_helpdesk_portal_ext.menu_1_list" parent="abc_helpdesk_portal_ext.menu_1"
+              action="abc_helpdesk_portal_ext.action_window"/>
+    <menuitem name="Server to list" id="abc_helpdesk_portal_ext" parent="abc_helpdesk_portal_ext.menu_2"
+              action="abc_helpdesk_portal_ext.action_server"/>
+-->
+  </data>
+</odoo>
